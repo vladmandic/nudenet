@@ -1,0 +1,34 @@
+{
+  "name": "nudenet",
+  "version": "0.0.1",
+  "description": "nudenet port to tfjs",
+  "main": "nudenet.js",
+  "scripts": {
+    "start": "node nudenet.js graph inputs/body.jpg",
+    "lint": "eslint *.js"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladmandic/nudenet.git"
+  },
+  "author": "Vladimir Mandic <mandic00@live.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vladmandic/nudenet/issues"
+  },
+  "homepage": "https://github.com/vladmandic/nudenet#readme",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^3.3.0",
+    "@vladmandic/pilogger": "^0.2.15",
+    "canvas": "^2.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0"
+  }
+}
