@@ -1,7 +1,7 @@
 {
   "name": "nudenet",
   "version": "0.0.1",
-  "description": "nudenet port to tfjs",
+  "description": "NudeNet: NSFW Object Detection for TFJS and NodeJS",
   "main": "nudenet.js",
   "scripts": {
     "start": "node nudenet.js graph inputs/body.jpg",

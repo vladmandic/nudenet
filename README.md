@@ -1,4 +1,4 @@
-# NudeNet for TFJS
+# NudeNet: NSFW Object Detection for TFJS and NodeJS
 
 Models included in `/model-graph-*` were converted to TFJS Graph model format from the original repository  
 Models descriptors have been additionally parsed for readability
