@@ -21,14 +21,14 @@
   },
   "homepage": "https://github.com/vladmandic/nudenet#readme",
   "dependencies": {
-    "@tensorflow/tfjs-node": "^3.3.0",
-    "@vladmandic/pilogger": "^0.2.15",
-    "canvas": "^2.7.0"
+    "@tensorflow/tfjs-node": "^3.6.1",
+    "@vladmandic/pilogger": "^0.2.17",
+    "canvas": "^2.8.0"
   },
   "devDependencies": {
-    "eslint": "^7.22.0",
+    "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-node": "^11.1.0"
   }
 }

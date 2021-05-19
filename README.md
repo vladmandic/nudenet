@@ -1,12 +1,15 @@
 # NudeNet: NSFW Object Detection for TFJS and NodeJS
 
 Models included in `/model-graph-*` were converted to TFJS Graph model format from the original repository  
-Models descriptors have been additionally parsed for readability
+Models descriptors and signature have been additionally parsed for readability
 
-Actual model parsing implementation in `nudenet.js` does not follow original  
-and is implemented using native TFJS ops and optimized for JavaScript execution
+Actual model parsing implementation in `nudenet.js` does not follow original and is implemented using native TFJS ops and optimized for JavaScript execution
 
 Code also includes simple bluring function that overlaps exposed body parts in the input image  
+
+## Example
+
+![Example Image](outputs/nude.jpg)
 
 <br><hr><br>
 
@@ -62,7 +65,3 @@ node nudenet.js graph inputs/nude.jpg outputs/nude.jpg
 ```
 
 <br>
-
-## Example Result
-
-![Example image](outputs/nude.jpg)
