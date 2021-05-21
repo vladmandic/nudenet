@@ -3,9 +3,52 @@
 Models included in `/model-graph-*` were converted to TFJS Graph model format from the original repository  
 Models descriptors and signature have been additionally parsed for readability
 
+## Implementation
+
 Actual model parsing implementation in `nudenet.js` does not follow original and is implemented using native TFJS ops and optimized for JavaScript execution
 
 Code also includes simple bluring function that overlaps exposed body parts in the input image  
+
+Function `processPrediction()` takes `model.predict()` output and returns object with array of detected body parts:
+
+Possible body parts are defined as:
+
+```js
+const labels = {
+  0: { id: 0, displayName: 'exposed anus' },
+  1: { id: 1, displayName: 'exposed armpits' },
+  2: { id: 2, displayName: 'belly' },
+  3: { id: 3, displayName: 'exposed belly' },
+  4: { id: 4, displayName: 'buttocks' },
+  5: { id: 5, displayName: 'exposed buttocks' },
+  6: { id: 6, displayName: 'female' },
+  7: { id: 7, displayName: 'male' },
+  8: { id: 8, displayName: 'feet' },
+  9: { id: 9, displayName: 'exposed feet' },
+  10: { id: 10, displayName: 'breast' },
+  11: { id: 11, displayName: 'exposed breast' },
+  12: { id: 12, displayName: 'vagina' },
+  13: { id: 13, displayName: 'exposed vagina' },
+  14: { id: 14, displayName: 'male breast' },
+  15: { id: 15, displayName: 'exposed male breast' },
+};
+```
+
+Actual result object includes:
+
+- `detected`: array of
+  - `score`: number
+  - `classId`: number
+  - `class`: string
+  - `bbox`: `x`, `y`, `width`, `height`: numbers
+
+And additionally, it augments results object with filtered detection objects that fit specific criteria
+
+- `person`
+- `sexy`
+- `nude`
+
+<br><hr><br>
 
 ## Example
 
