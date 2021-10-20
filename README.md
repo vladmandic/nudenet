@@ -1,12 +1,15 @@
 # NudeNet: NSFW Object Detection for TFJS and NodeJS
 
-Model included in `/model/` were converted to **TFJS Graph model** format from the original repository  
-Model descriptors and signature have been additionally parsed for readability  
+## Notes
 
-Actual model parsing implementation in `nudenet.js` does not follow original  
-and is implemented using native TFJS ops and optimized for JavaScript execution  
-
-Code also includes simple bluring function for exposed body parts in the input image  
+- Model included in `/model/` were converted to **TFJS Graph model** format from the original repository  
+  Model descriptors and signature have been additionally parsed for readability  
+- Model itself uses dynamic input sizes  
+- Parsing implementation in `nudenet.js` does not follow original  
+  and is implemented using native TFJS ops and optimized for JavaScript execution  
+- Code also includes simple bluring function for exposed body parts in the input image  
+- Example implementation is for **NodeJS**  
+  but can be used in Browser environments by changing **tfjs** dependencies and image loader function  
 
 <br>
 
@@ -104,6 +107,21 @@ tensorflowjs_converter \
   --control_flow_v2=true --strip_debug_ops=true --signature_name=predict \
   --weight_shard_size_bytes=16777216 --quantize_float16=* \
   model/saved model/
+```
+
+### Model Signature
+
+```js
+2021-10-20 11:28:12 INFO:  graph model: /home/vlado/dev/nudenet/model/model.json
+2021-10-20 11:28:12 INFO:  size: { numTensors: 843, numDataBuffers: 843, numBytes: 146462740 }
+2021-10-20 11:28:12 DATA:  inputs: [
+  { name: 'images', dtype: 'DT_FLOAT', shape: [ -1, -1, -1, 3 ] },
+]
+2021-10-20 11:28:13 DATA:  outputs: [
+  { id: 0, name: 'output1', dytpe: 'DT_FLOAT', shape: [ -1, 300, 4 ] },
+  { id: 1, name: 'output3', dytpe: 'DT_INT32', shape: [ -1, 300 ] },
+  { id: 2, name: 'output2', dytpe: 'DT_FLOAT', shape: [ -1, 300 ] },
+]
 ```
 
 <br>
