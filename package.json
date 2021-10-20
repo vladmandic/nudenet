@@ -1,10 +1,10 @@
 {
   "name": "nudenet",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "NudeNet: NSFW Object Detection for TFJS and NodeJS",
   "main": "nudenet.js",
   "scripts": {
-    "start": "node nudenet.js graph inputs/body.jpg",
+    "start": "node nudenet.js samples/nude.jpg samples/nude-out.jpg",
     "lint": "eslint *.js"
   },
   "engines": {
@@ -21,14 +21,14 @@
   },
   "homepage": "https://github.com/vladmandic/nudenet#readme",
   "dependencies": {
-    "@tensorflow/tfjs-node": "^3.6.1",
-    "@vladmandic/pilogger": "^0.2.17",
+    "@tensorflow/tfjs-node": "^3.9.0",
+    "@vladmandic/pilogger": "^0.3.3",
     "canvas": "^2.8.0"
   },
   "devDependencies": {
-    "eslint": "^7.26.0",
+    "eslint": "^8.0.1",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-node": "^11.1.0"
   }
 }

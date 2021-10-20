@@ -1,4 +1,4 @@
 .vscode
 node_modules
 pnpm-lock.yaml
-model-*
+model/saved

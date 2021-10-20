@@ -1,110 +1,109 @@
 # NudeNet: NSFW Object Detection for TFJS and NodeJS
 
-Models included in `/model-graph-*` were converted to TFJS Graph model format from the original repository  
-Models descriptors and signature have been additionally parsed for readability
+Model included in `/model/` were converted to **TFJS Graph model** format from the original repository  
+Model descriptors and signature have been additionally parsed for readability  
 
-## Implementation
+Actual model parsing implementation in `nudenet.js` does not follow original  
+and is implemented using native TFJS ops and optimized for JavaScript execution  
 
-Actual model parsing implementation in `nudenet.js` does not follow original and is implemented using native TFJS ops and optimized for JavaScript execution
+Code also includes simple bluring function for exposed body parts in the input image  
 
-Code also includes simple bluring function that overlaps exposed body parts in the input image  
+<br>
 
-Function `processPrediction()` takes `model.predict()` output and returns object with array of detected body parts:
+## Output
 
-Possible body parts are defined as:
+Structure of the return object:
 
 ```js
-const labels = {
-  0: { id: 0, displayName: 'exposed anus' },
-  1: { id: 1, displayName: 'exposed armpits' },
-  2: { id: 2, displayName: 'belly' },
-  3: { id: 3, displayName: 'exposed belly' },
-  4: { id: 4, displayName: 'buttocks' },
-  5: { id: 5, displayName: 'exposed buttocks' },
-  6: { id: 6, displayName: 'female' },
-  7: { id: 7, displayName: 'male' },
-  8: { id: 8, displayName: 'feet' },
-  9: { id: 9, displayName: 'exposed feet' },
-  10: { id: 10, displayName: 'breast' },
-  11: { id: 11, displayName: 'exposed breast' },
-  12: { id: 12, displayName: 'vagina' },
-  13: { id: 13, displayName: 'exposed vagina' },
-  14: { id: 14, displayName: 'male breast' },
-  15: { id: 15, displayName: 'exposed male breast' },
-};
+{
+  input: {
+    file: String,
+    width: Number,
+    height: Number,
+  },
+  person: Boolean, // is person detected?
+  sexy: Boolean, // is person considered sexy?
+  nude: Boolean, // is person considered nude?
+  parts: Array<{ // array of detected body parts
+    score: Number, // confidence in detection
+    id: Number,
+    class: String, // label for body part
+    box: Number[], // [x, y, width, height]
+  }>,
+}
 ```
 
-Actual result object includes:
+Where class can be :
 
-- `detected`: array of
-  - `score`: number
-  - `classId`: number
-  - `class`: string
-  - `bbox`: `x`, `y`, `width`, `height`: numbers
+```js
+const labels = [ // class labels
+  'exposed anus',
+  'exposed armpits',
+  'belly',
+  'exposed belly',
+  'buttocks',
+  'exposed buttocks',
+  'female face',
+  'male face',
+  'feet',
+  'exposed feet',
+  'breast',
+  'exposed breast',
+  'vagina',
+  'exposed vagina',
+  'male breast',
+  'exposed male breast',
+];
+```
 
-And additionally, it augments results object with filtered detection objects that fit specific criteria
-
-- `person`
-- `sexy`
-- `nude`
-
-<br><hr><br>
+<br>
 
 ## Example
 
-![Example Image](outputs/nude.jpg)
+![Example Image](samples/nude-out.jpg)
 
-<br><hr><br>
+<br>
 
-## Conversion
-
-Original: <https://github.com/notAI-tech/NudeNet>
-
-```shell
-tensorflowjs_converter --input_format tf_saved_model --output_format tfjs_graph_model --strip_debug_ops=* --signature_name=predict --weight_shard_size_bytes=16777216 model-saved/ model-graph/
-tensorflowjs_converter --input_format tf_saved_model --output_format tfjs_graph_model --strip_debug_ops=* --signature_name=predict --weight_shard_size_bytes=16777216 --quantize_float16=* ./model-saved ./model-graph-f16
-```
-
-## Test
-
-```shell
-node nudenet.js graph inputs/nude.jpg outputs/nude.jpg
-```
+> node nudenet.js samples/nude.jpg samples/nude-out.jpg
 
 ```js
-2021-03-25 08:14:08 INFO:  nudenet version 0.0.1
-2021-03-25 08:14:08 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.12.0
-2021-03-25 08:14:08 INFO:  TensorFlow/JS Version 3.3.0
-2021-03-25 08:14:08 INFO:  TensorFlow/JS Backend tensorflow
-2021-03-25 08:14:08 INFO:  TensorFlow/JS Flags { IS_BROWSER: false, IS_NODE: true, DEBUG: false, PROD: true }
-2021-03-25 08:14:08 STATE:  Loading graph model: 'file://model-graph/model.json'
-2021-03-25 08:14:08 INFO:  Image: 'inputs/nude.jpg' width: 801 height: 1200
-2021-03-25 08:14:10 DATA:  {
-  detected: [
-    { score: 0.872, classId: 3, class: 'exposed belly', bbox: { x: 193, y: 642, width: 244, height: 223 } },
-    { score: 0.7449, classId: 11, class: 'exposed breast', bbox: { x: 372, y: 485, width: 143, height: 153 } },
-    { score: 0.6699, classId: 6, class: 'female', bbox: { x: 284, y: 203, width: 165, height: 155 } },
-    { score: 0.6033, classId: 11, class: 'exposed breast', bbox: { x: 202, y: 463, width: 141, height: 156 } },
-    { score: 0.5385, classId: 12, class: 'vagina', bbox: { x: 187, y: 943, width: 94, height: 96 } },
-    { score: 0.3684, classId: 10, class: 'breast', bbox: { x: 202, y: 463, width: 139, height: 157 } },
-    [length]: 6
-  ],
-  image: { file: 'inputs/nude.jpg', width: 801, height: 1200 },
-  person: [ { score: 0.6699, classId: 6, class: 'female', bbox: { x: 284, y: 203, width: 165, height: 155 } }, [length]: 1 ],
-  sexy: [
-    { score: 0.872, classId: 3, class: 'exposed belly', bbox: { x: 193, y: 642, width: 244, height: 223 } },
-    { score: 0.3684, classId: 10, class: 'breast', bbox: { x: 202, y: 463, width: 139, height: 157 } },
-    [length]: 2
-  ],
-  nude: [
-    { score: 0.7449, classId: 11, class: 'exposed breast', bbox: { x: 372, y: 485, width: 143, height: 153 } },
-    { score: 0.6033, classId: 11, class: 'exposed breast', bbox: { x: 202, y: 463, width: 141, height: 156 } },
-    { score: 0.5385, classId: 12, class: 'vagina', bbox: { x: 187, y: 943, width: 94, height: 96 } },
-    [length]: 3
+2021-10-20 11:11:11 INFO:  nudenet version 0.0.1
+2021-10-20 11:11:11 INFO:  User: vlado Platform: linux Arch: x64 Node: v16.8.0
+2021-10-20 11:11:11 INFO:  tfjs version: 3.9.0 backend: tensorflow
+2021-10-20 11:11:11 INFO:  options: { debug: true, modelPath: 'file://model/model.json', minScore: 0.3, maxResults: 50, iouThreshold: 0.5, outputNodes: [ 'output1', 'output2', 'output3' ], blurNude: true, blurRadius: 25 }
+2021-10-20 11:11:11 STATE: loaded graph model: file://model/model.json
+2021-10-20 11:11:11 INFO:  loaded image: samples/nude.jpg width: 801 height: 1112
+2021-10-20 11:11:13 DATA:  result: {
+  input: { file: 'samples/nude.jpg', width: 801, height: 1112 },
+  person: true,
+  sexy: true,
+  nude: true,
+  parts: [
+    { score: 0.8839950561523438, id: 3, class: 'exposed belly', box: [ 194, 639, 244, 221 ] },
+    { score: 0.7332422137260437, id: 11, class: 'exposed breast', box: [ 371, 450, 142, 154 ] },
+    { score: 0.566450834274292, id: 6, class: 'female face', box: [ 282, 164, 169, 155 ] },
+    { score: 0.5646520256996155, id: 11, class: 'exposed breast', box: [ 202, 430, 134, 156 ] },
+    { score: 0.5579367876052856, id: 12, class: 'vagina', box: [ 187, 908, 92, 96 ] }
   ]
 }
-2021-03-25 08:14:11 STATE:  Created output image: outputs/nude.jpg
-2021-03-25 08:14:11 STATE:  Exec: model: 'file://model-graph/model.json' input: 'inputs/nude.jpg' output: 'outputs/nude.jpg' objects: 6
+2021-10-20 11:11:13 STATE: created output image: samples/nude-out.jpg
+2021-10-20 11:11:13 STATE: done: model:file://model/model.json input:samples/nude.jpg output:samples/nude-out.jpg objects: 5
+```
+
+<br>
+
+## Conversion Notes
+
+- Original implementation: <https://github.com/notAI-tech/NudeNet>
+- Model checkpoint: <https://github.com/notAI-tech/NudeNet/releases/download/v0/detector_v2_default_checkpoint_tf.tar>
+
+```shell
+tensorflowjs_converter \
+  --input_format tf_saved_model \
+  --output_format tfjs_graph_model \
+  --control_flow_v2=true --strip_debug_ops=true --signature_name=predict \
+  --weight_shard_size_bytes=16777216 --quantize_float16=* \
+  model/saved model/
 ```
 
 <br>
