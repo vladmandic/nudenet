@@ -5,11 +5,11 @@
 - Model included in `/model/` were converted to **TFJS Graph model** format from the original repository  
   Model descriptors and signature have been additionally parsed for readability  
 - Model itself uses dynamic input sizes  
-- Parsing implementation in `nudenet.js` does not follow original  
+- Results parsing implementation does not follow original  
   and is implemented using native TFJS ops and optimized for JavaScript execution  
 - Code also includes simple bluring function for exposed body parts in the input image  
-- Example implementation is for **NodeJS**  
-  but can be used in Browser environments by changing **tfjs** dependencies and image loader function  
+- Example implementation for **NodeJS**: `src/node.js`
+- Example implementation for **Browsers**: `src/index.ts`  
 
 <br>
 

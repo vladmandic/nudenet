@@ -1,0 +1,50 @@
+{
+  "log": {
+    "enabled": false,
+    "debug": false,
+    "console": true
+  },
+  "profiles": {
+    "serve": ["serve"],
+    "production": ["clean", "compile", "lint"],
+    "development": ["serve", "watch", "compile"]
+  },
+  "clean": {
+    "locations": ["dist/*", "types/*", "typedoc/*"]
+  },
+  "lint": {
+    "locations": [ "src/**/*.ts" ],
+    "rules": { }
+  },
+  "watch": {
+    "locations": [ "src/**/*" ]
+  },
+  "serve": {
+    "sslKey": "node_modules/@vladmandic/build/cert/https.key",
+    "sslCrt": "node_modules/@vladmandic/build/cert/https.crt",
+    "httpPort": 9000,
+    "httpsPort": 9001,
+    "documentRoot": ".",
+    "defaultFolder": "src",
+    "defaultFile": "index.html"
+  },
+  "build": {
+    "global": {
+      "target": "esnext",
+      "sourcemap": true,
+      "treeShaking": true,
+      "ignoreAnnotations": false,
+      "minify": true,
+      "format": "esm",
+      "platform": "browser",
+      "banner": { "js": "/*\n  NudeNet\n  author: <https://github.com/vladmandic>'\n*/\n" }
+    },
+    "targets": [
+      {
+        "name": "index",
+        "input": "src/index.ts",
+        "output": "dist/index.js"
+      }
+   ]
+  }
+}

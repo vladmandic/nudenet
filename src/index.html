@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NudeNet Browser Tests</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=yes">
+    <meta name="keywords" content="Human">
+    <meta name="application-name" content="NudeNet">
+  </head>
+  <body style="font-family: 'Segoe UI'; font-size: 20px; font-variant: small-caps; margin: 0; background: black; color: white; width: 100vw; overflow: hidden; display: grid">
+    <div style="position: fixed; z-index: 10; padding: 8px; margin: 8px; background: rgba(10, 0, 20, 0.2)">
+      <label><input type="checkbox" id="markregions" name="markregions" value="markregions" checked>mark regions</label>
+      <label><input type="checkbox" id="blurnude" name="blurnude" value="blurnude" checked>blur nude</label>
+      <label><input type="checkbox" id="blursexy" name="blursexy" value="blursexy">blur sexy</label>
+    </div>
+    <video id="video" style="height: 50vh" controls loop></video>
+    <canvas id="canvas" style="height: 50vh" width="0" height="0"></canvas>
+    <script src="../dist/index.js"></script>
+  </body>
+</html>
