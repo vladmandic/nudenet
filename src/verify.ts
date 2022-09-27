@@ -32,7 +32,7 @@ async function main() {
   await tf.setBackend('webgpu');
   await tf.ready();
   console.log({ tf: tf.version_core, backend: tf.getBackend(), available: tf.engine().registryFactory, flags: tf.env().getFlags() });
-  video.src = '..//samples/f1.webm';
+  video.src = '../samples/f1.webm';
   video.onclick = () => stop = true;
   video.requestVideoFrameCallback(verifyFrame); // starts processing when first frame is displayed
 }
