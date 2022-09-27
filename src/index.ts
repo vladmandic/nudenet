@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
-import '@tensorflow/tfjs-backend-webgl'; // eslint-disable-line import/no-extraneous-dependencies
+// import '@tensorflow/tfjs-backend-webgl'; // eslint-disable-line import/no-extraneous-dependencies
 import '@tensorflow/tfjs-backend-webgpu'; // eslint-disable-line import/no-extraneous-dependencies
 
 const video = document.getElementById('video') as HTMLVideoElement;
@@ -16,9 +16,8 @@ let model;
 const log = (msg) => console.log(msg); // eslint-disable-line no-console
 
 const options = { // options
-  // modelPath: 'model/saved/tjfs/model.json',
-  modelPath: 'model/model.json',
-  videoPath: 'samples/video.webm',
+  modelPath: '../model/model.json',
+  videoPath: '../samples/video.webm',
   minScore: 0.30,
   maxResults: 50,
   iouThreshold: 0.5,
@@ -150,7 +149,7 @@ async function processLoop() {
 async function main() {
   if (tf.engine().registryFactory.webgpu && navigator?.gpu) await tf.setBackend('webgpu');
   else await tf.setBackend('webgl');
-  tf.env().set('WEBGL_USE_SHAPES_UNIFORMS', true); // doubles the performance
+  // tf.env().set('WEBGL_USE_SHAPES_UNIFORMS', true); // doubles the performance
   await tf.ready();
   log({ tf: tf.version_core, backend: tf.getBackend(), available: tf.engine().registryFactory, flags: tf.env().getFlags() });
   model = await tf.loadGraphModel(options.modelPath);

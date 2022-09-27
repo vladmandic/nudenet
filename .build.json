@@ -44,6 +44,11 @@
         "name": "index",
         "input": "src/index.ts",
         "output": "dist/index.js"
+      },
+      {
+        "name": "verify",
+        "input": "src/verify.ts",
+        "output": "dist/verify.js"
       }
    ]
   }
