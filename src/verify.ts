@@ -1,13 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 
 import * as tf from '@tensorflow/tfjs';
-import '@tensorflow/tfjs-backend-webgpu';
+import '@tensorflow/tfjs-backend-webgpu'; // eslint-disable-line import/no-extraneous-dependencies
 
 const video = document.getElementById('video') as HTMLVideoElement;
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-
 let stop = false;
 
 async function verifyFrame(_timestamp: DOMHighResTimeStamp, metadata: VideoFrameMetadata) {
@@ -33,7 +31,7 @@ async function main() {
   await tf.ready();
   console.log({ tf: tf.version_core, backend: tf.getBackend(), available: tf.engine().registryFactory, flags: tf.env().getFlags() });
   video.src = '../samples/f1.webm';
-  video.onclick = () => stop = true;
+  video.onclick = () => stop = !stop;
   video.requestVideoFrameCallback(verifyFrame); // starts processing when first frame is displayed
 }
 
