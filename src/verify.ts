@@ -27,7 +27,8 @@ async function verifyFrame(_timestamp: DOMHighResTimeStamp, metadata: VideoFrame
 }
 
 async function main() {
-  await tf.setBackend('webgpu');
+  if (navigator.gpu) await tf.setBackend('webgpu');
+  else await tf.setBackend('webgl');
   await tf.ready();
   console.log({ tf: tf.version_core, backend: tf.getBackend(), available: tf.engine().registryFactory, flags: tf.env().getFlags() });
   video.src = '../samples/f1.webm';
