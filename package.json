@@ -1,6 +1,6 @@
 {
   "name": "nudenet",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "NudeNet: NSFW Object Detection for TFJS and NodeJS",
   "main": "nudenet.js",
   "scripts": {
@@ -22,28 +22,28 @@
   },
   "homepage": "https://github.com/vladmandic/nudenet#readme",
   "dependencies": {
-    "@tensorflow/tfjs": "^3.20.0",
-    "@tensorflow/tfjs-node": "^3.20.0",
-    "@vladmandic/pilogger": "^0.4.6"
+    "@tensorflow/tfjs": "^4.2.0",
+    "@tensorflow/tfjs-node": "^4.2.0",
+    "@vladmandic/pilogger": "^0.4.7"
   },
   "devDependencies": {
-    "@html-eslint/eslint-plugin": "^0.14.1",
-    "@html-eslint/parser": "^0.14.0",
-    "@tensorflow/tfjs-backend-webgl": "^3.20.0",
-    "@tensorflow/tfjs-backend-webgpu": "0.0.1-alpha.13",
+    "@html-eslint/eslint-plugin": "^0.16.0",
+    "@html-eslint/parser": "^0.16.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.2.0",
+    "@tensorflow/tfjs-backend-webgpu": "0.0.1-alpha.17",
     "@tensorflow/tfjs-node": "^3.20.0",
-    "@tensorflow/tfjs-node-gpu": "^3.20.0",
-    "@vladmandic/build": "^0.7.12",
+    "@tensorflow/tfjs-node-gpu": "^4.2.0",
+    "@vladmandic/build": "^0.7.15",
     "@vladmandic/pilogger": "^0.4.6",
-    "canvas": "^2.10.1",
-    "eslint": "^8.23.1",
+    "canvas": "^2.11.0",
+    "eslint": "^8.33.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-html": "^7.1.0",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.1",
-    "long": "^5.2.0",
-    "pipe2jpeg": "^0.3.3"
+    "eslint-plugin-promise": "^6.1.1",
+    "long": "^5.2.1",
+    "pipe2jpeg": "^0.4.1"
   }
 }

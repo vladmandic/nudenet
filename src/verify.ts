@@ -8,6 +8,7 @@ const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 let stop = false;
 
+// @ts-ignore
 async function verifyFrame(_timestamp: DOMHighResTimeStamp, metadata: VideoFrameMetadata) {
   if (canvas.width !== video.videoWidth) canvas.width = video.videoWidth;
   if (canvas.height !== video.videoHeight) canvas.height = video.videoHeight;

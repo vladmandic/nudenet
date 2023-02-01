@@ -1,7 +1,8 @@
 const fs = require('fs');
 const log = require('@vladmandic/pilogger');
 const tf = require('@tensorflow/tfjs-node');
-const { Canvas, loadImage } = require('canvas');
+
+const { Canvas, loadImage } = require('canvas'); // eslint-disable-line node/no-unpublished-require
 
 const options = { // options
   debug: true,
