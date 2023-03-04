@@ -86,7 +86,7 @@ function getTensorFromImage(imageFile) {
     return null;
   }
   const data = fs.readFileSync(imageFile);
-  const bufferT = tf.node.decodeImage(data);
+  const bufferT = tf.node.decodeImage(data, 3);
   const expandedT = tf.expandDims(bufferT, 0);
   const imageT = tf.cast(expandedT, 'float32');
   imageT['file'] = imageFile;
