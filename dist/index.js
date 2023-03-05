@@ -1212,7 +1212,7 @@ var require_xorshift7 = __commonJS({
       }
       function impl(seed, opts) {
         if (seed == null)
-          seed = +new Date();
+          seed = +/* @__PURE__ */ new Date();
         var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
           return (xg.next() >>> 0) / 4294967296;
         };
@@ -1324,7 +1324,7 @@ var require_xor4096 = __commonJS({
       ;
       function impl(seed, opts) {
         if (seed == null)
-          seed = +new Date();
+          seed = +/* @__PURE__ */ new Date();
         var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
           return (xg.next() >>> 0) / 4294967296;
         };
@@ -1568,7 +1568,7 @@ var require_seedrandom = __commonJS({
           return tostring(out);
         } catch (e) {
           var browser = global2.navigator, plugins = browser && browser.plugins;
-          return [+new Date(), global2, plugins, global2.screen, tostring(pool3)];
+          return [+/* @__PURE__ */ new Date(), global2, plugins, global2.screen, tostring(pool3)];
         }
       }
       function tostring(a) {
@@ -5010,7 +5010,7 @@ function getModelArtifactsInfoForJSON(modelArtifacts) {
     throw new Error("Expected JSON model topology, received ArrayBuffer.");
   }
   return {
-    dateSaved: new Date(),
+    dateSaved: /* @__PURE__ */ new Date(),
     modelTopologyType: "JSON",
     modelTopologyBytes: modelArtifacts.modelTopology == null ? 0 : stringByteLength(JSON.stringify(modelArtifacts.modelTopology)),
     weightSpecsBytes: modelArtifacts.weightSpecs == null ? 0 : stringByteLength(JSON.stringify(modelArtifacts.weightSpecs)),

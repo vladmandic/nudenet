@@ -65,9 +65,18 @@ const labels = [ // class labels
 
 ![Example Image](samples/nude-out.jpg)
 
+There are three examples:
+- NodeJS Image processing: `src/node.js`  
+- NodeJS Video processing: `src/node-video.js`  
+  this demo has additional dependencies which are not installed by default  
+  `@tensorflow/tfjs-node-gpu` and `pipe2jpeg`  
+  and requires functional copy of `ffmpeg`  
+- Browser: `src/index.html`  
+  written in TypeScript `src/index.ts` and transpiled to JavaScript `dist/index.js`  
+
 <br>
 
-> node nudenet.js samples/nude.jpg samples/nude-out.jpg
+> node src/node.js samples/nude.jpg samples/nude-out.jpg
 
 ```js
 2021-10-20 11:11:11 INFO:  nudenet version 0.0.1

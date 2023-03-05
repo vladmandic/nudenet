@@ -9,7 +9,7 @@
     "lint": "eslint src/*"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "repository": {
     "type": "git",
@@ -27,16 +27,15 @@
     "@vladmandic/pilogger": "^0.4.7"
   },
   "devDependencies": {
-    "@html-eslint/eslint-plugin": "^0.16.0",
-    "@html-eslint/parser": "^0.16.0",
+    "@html-eslint/eslint-plugin": "^0.17.1",
+    "@html-eslint/parser": "^0.17.1",
     "@tensorflow/tfjs-backend-webgl": "^4.2.0",
     "@tensorflow/tfjs-backend-webgpu": "0.0.1-alpha.17",
-    "@tensorflow/tfjs-node": "^3.20.0",
-    "@tensorflow/tfjs-node-gpu": "^4.2.0",
-    "@vladmandic/build": "^0.7.15",
+    "@tensorflow/tfjs-node": "^4.20.0",
+    "@vladmandic/build": "^0.8.2",
     "@vladmandic/pilogger": "^0.4.6",
     "canvas": "^2.11.0",
-    "eslint": "^8.33.0",
+    "eslint": "^8.35.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.27.5",
