@@ -1,6 +1,17 @@
+# defaults 
 .vscode
 node_modules
 pnpm-lock.yaml
-model/saved
 *.map
 
+# models
+!models/base-f16
+models/base-f32
+models/base-i16
+models/base-i8
+models/base-saved
+!models/default-f16
+models/default-f32
+models/default-i16
+models/default-i8
+models/default-saved

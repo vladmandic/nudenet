@@ -4,7 +4,7 @@
   "description": "NudeNet: NSFW Object Detection for TFJS and NodeJS",
   "main": "nudenet.js",
   "scripts": {
-    "start": "node src/node.js samples/nude.jpg samples/nude-out.jpg",
+    "start": "node src/node.js -i samples/nude.jpg -o samples/nude-out.jpg",
     "dev": "build --profile development",
     "lint": "eslint src/*"
   },
@@ -22,15 +22,16 @@
   },
   "homepage": "https://github.com/vladmandic/nudenet#readme",
   "dependencies": {
-    "@tensorflow/tfjs": "^4.3.0",
-    "@tensorflow/tfjs-node": "^4.3.0",
-    "@vladmandic/pilogger": "^0.4.7"
+    "@tensorflow/tfjs": "^4.2.0",
+    "@tensorflow/tfjs-node": "^4.2.0",
+    "@vladmandic/pilogger": "^0.4.7",
+    "argparse": "^2.0.1"
   },
   "devDependencies": {
-    "@html-eslint/eslint-plugin": "^0.17.1",
+    "@html-eslint/eslint-plugin": "^0.17.2",
     "@html-eslint/parser": "^0.17.1",
-    "@tensorflow/tfjs-backend-webgl": "^4.3.0",
-    "@tensorflow/tfjs-backend-webgpu": "0.0.1-alpha.18",
+    "@tensorflow/tfjs-backend-webgl": "^4.2.0",
+    "@tensorflow/tfjs-backend-webgpu": "0.0.1-alpha.17",
     "@tensorflow/tfjs-node": "^4.20.0",
     "@vladmandic/build": "^0.8.2",
     "@vladmandic/pilogger": "^0.4.6",

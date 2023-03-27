@@ -6,7 +6,7 @@ const tf = require('@tensorflow/tfjs-node-gpu');
 
 const options = { // options
   debug: true,
-  modelPath: 'file://model/model.json',
+  modelPath: 'file://models/default-f16/model.json',
   inputVideo: 'samples/video.webm',
   minScore: 0.30,
   maxResults: 50,
