@@ -16,7 +16,7 @@ const log = (msg) => console.log(msg); // eslint-disable-line no-console
 const options = { // options
   modelPath: '../models/default-f16/model.json',
   videoPath: '../samples/video.webm',
-  minScore: 0.30,
+  minScore: 0.38,
   maxResults: 50,
   iouThreshold: 0.5,
   outputNodes: ['output1', 'output2', 'output3'],

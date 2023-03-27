@@ -8,7 +8,7 @@ const { Canvas, loadImage } = require('canvas'); // eslint-disable-line node/no-
 
 const options = { // options
   debug: true,
-  modelPath: 'file://models/base-f16/model.json',
+  modelPath: 'file://models/default-f16/model.json',
   minScore: 0.38,
   maxResults: 50,
   iouThreshold: 0.5,

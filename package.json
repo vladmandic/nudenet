@@ -1,10 +1,10 @@
 {
   "name": "nudenet",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "NudeNet: NSFW Object Detection for TFJS and NodeJS",
   "main": "nudenet.js",
   "scripts": {
-    "start": "node src/node.js -i samples/nude.jpg -o samples/nude-out.jpg",
+    "start": "node src/nudenet.js -i samples/nude.jpg -o samples/nude-out-default.jpg",
     "dev": "build --profile development",
     "lint": "eslint src/*"
   },
