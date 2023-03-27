@@ -1,6 +1,6 @@
 {
   "name": "nudenet",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "NudeNet: NSFW Object Detection for TFJS and NodeJS",
   "main": "nudenet.js",
   "scripts": {
