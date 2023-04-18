@@ -79,7 +79,7 @@ Where class can be :
 
 There are three examples:
 
-- NodeJS Image processing: `src/node.js`  
+- NodeJS Image processing: `src/nudenet.js`  
 - NodeJS Video processing: `src/node-video.js`  
   this demo has additional dependencies which are not installed by default  
   `@tensorflow/tfjs-node-gpu` and `pipe2jpeg`  
