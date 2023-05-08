@@ -138,8 +138,8 @@ async function processLoop() {
     const res = await processPrediction(t.boxes, t.scores, t.classes, t.cast);
     await tf.browser.toPixels(t.resize as tf.Tensor3D, canvas);
     processParts(res);
-    log({ ts, time: t1 - t0, res, t });
     Object.keys(t).forEach((tensor) => tf.dispose(t[tensor]));
+    log({ ts, time: t1 - t0, res, t, tensors: tf.memory().numTensors });
   }
   requestAnimationFrame(processLoop);
 }
