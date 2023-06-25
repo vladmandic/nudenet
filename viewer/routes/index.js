@@ -7,7 +7,7 @@ const imageDirectory = 'd:\\result'; // your result path
 
 router.get('/', (req, res) => {
   const id = parseInt(req.query.id);
-  const n = 2;
+  const n = 1;
 
   fs.readdir(imageDirectory, (err, files) => {
     if (err) {
@@ -16,15 +16,26 @@ router.get('/', (req, res) => {
       return;
     }
 
-    const startIndex = id >= 0 ? id : 0;
+    const startIndex = id || 0;
 
     if (startIndex < files.length) {
       const endIndex = startIndex + n;
       const selectedFiles = files.slice(startIndex, endIndex);
-      const imagePaths = selectedFiles.map(filename => path.join(imageDirectory, filename));
-
+      const imagePaths = selectedFiles.map((filename, index) => {
+        const imagePath = path.join(imageDirectory, filename);
+        const link = `http://localhost:3000/image/${id}`;
+        
+        return {
+          src: link,
+          link: link,
+          alt: imagePath, // Remplacez par la description de l'image souhaitée
+          title: 'Titre de l\'image' // Remplacez par le titre de l'image souhaité
+        };
+      });
       
 
+      
+      console.log(imagePaths)
       res.render("index", {
         id: id,
         n: n,

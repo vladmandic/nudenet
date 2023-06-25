@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <title>Galerie de photos</title>
   <style>
-    /* CSS pour la mise en page */
-    /* ... */
+    img {
+  width: 50%;
+  height: auto;
+}
   </style>
 </head>
 <body>
@@ -31,7 +33,7 @@ var delaiEnSecondes = 5;
 
 // Déclencher la redirection après le délai spécifié
 setTimeout(function() {
-  redirigerVersPage("http://localhost:3000/<%= id + n %>"); // Remplacez l'URL par celle souhaitée
+  redirigerVersPage("http://localhost:3000/?id=<%= id + n %>"); // Remplacez l'URL par celle souhaitée
 }, delaiEnSecondes * 1000);
 
   </script>
