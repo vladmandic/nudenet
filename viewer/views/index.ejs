@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Galerie de photos</title>
+  <style>
+    /* CSS pour la mise en page */
+    /* ... */
+  </style>
+</head>
+<body>
+  <h1>Galerie de photos</h1>
+  <div class="gallery">
+    <% images.forEach(function(image) { %>
+      <div class="gallery-item">
+        <a href="<%= image.link %>">
+          <img src="<%= image.src %>" alt="<%= image.alt %>" title="<%= image.title %>">
+        </a>
+      </div>
+    <% }); %>
+  </div>
+
+  <script>
+  // Fonction de redirection
+function redirigerVersPage(url) {
+  window.location.href = url;
+}
+
+// Délai en secondes avant la redirection
+var delaiEnSecondes = 5;
+
+// Déclencher la redirection après le délai spécifié
+setTimeout(function() {
+  redirigerVersPage('https://www.example.com'); // Remplacez l'URL par celle souhaitée
+}, delaiEnSecondes * 1000);
+
+  </script>
+</body>
 </html>
