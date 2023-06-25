@@ -1,10 +1,32 @@
 const { exec } = require("child_process");
 const fs = require("fs");
-
+var dedup=(path)=>{
+  fs.readdir(`./${path}`,"utf8", function (err, files) {
+  
+  if(!err){
+    for (let i = 0; i < files.length; i++) {
+      var chem =`${path}/${files[i]}`
+      var temp = fs.readFileSync(chem).toString()
+      for (let i = 0; i < files.length; i++) {
+        var chem2 = `${path}/${files[i]}`
+        var temp2 = fs.readFileSync(chem2).toString()
+        if (chem != chem2) {
+          if (temp === temp2) {
+            fs.unlinkSync(chem2);files.splice(i, 1);console.log(`${files[i]} is duplicated`)
+          }
+          
+        }
+        
+      }
+  
+    }
+  }
+ 
+})}
 function analyze(dir) {
   console.time(dir);
   const array = fs.readdirSync(dir);
-  const resultFiles = fs.readdirSync("../result");
+  const resultFiles = fs.readdirSync("..\\result");
   const maxIndex = maxin(resultFiles,array);
   let currentIndex = maxIndex;
     console.log(currentIndex)
@@ -13,7 +35,7 @@ function analyze(dir) {
     if (currentIndex >= array.length) {
       console.timeEnd(dir);
       console.log(`${array.length - resultFiles.length} commandes ont été exécutées`);
-      require("deduplicator-alphaleadershipv1")("../result");
+      ("..\\result");
       return;
     }
     console.log(currentIndex)
@@ -54,4 +76,4 @@ function protect(str) {
   return str.replace(/ /g, "\\ ");
 }
 
-analyze("d:\\perso\\img-test\\image\\cosplay");
+analyze("d:\\perso\\img-test\\image\\cosplay");// replace with your storage path 
