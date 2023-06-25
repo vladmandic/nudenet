@@ -3,7 +3,7 @@ var router = express.Router();
 const fs = require('fs');
 const path = require('path');
 
-const imageDirectory = 'd:\\result';
+const imageDirectory = 'd:\\result'; // your result path  
 
 router.get('/', (req, res) => {
   const id = parseInt(req.query.id);
@@ -23,13 +23,13 @@ router.get('/', (req, res) => {
       const selectedFiles = files.slice(startIndex, endIndex);
       const imagePaths = selectedFiles.map(filename => path.join(imageDirectory, filename));
 
-      const response = {
+      
+
+      res.render("index", {
         id: id,
         n: n,
         images: imagePaths
-      };
-
-      res.send(response);
+      })
     } else {
       res.status(404).send('Aucune image trouvée');
     }
